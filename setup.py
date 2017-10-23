@@ -10,9 +10,9 @@ setup(
     package_dir={'': 'src'},
     py_modules=['Trigrams'],
     install_requires=[],
-    #extras_require={
-        #'testing': ['pytest', 'pytest --cov'],
-        #'development': ['ipython']},
+    extras_require={
+        'testing': ['pytest', 'pytest --cov'],
+        'development': ['ipython']},
     entry_points={
         'console_scripts': [
             'runme = Trigrams:main'
