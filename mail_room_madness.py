@@ -15,15 +15,16 @@ def mail_room():  # pragma: no cover
         print("(Enter 'q' at any time to return to this menu.)")
         reply = int(input("1 or 2?"))  # Input
         if reply == 1:
-            add_amount()
+            name, amount = receive_donation()
+            add_amount(name, amount)
+            print_letter(name, amount)
         if reply == 2:
-            report()
+            print_report()
         if reply == 3:
             reply = quit
 
 
-def add_amount():  # pragma: no cover
-    """Add the amount to the donor's total."""
+def receive_donation():
     amount = ""
     name = input("Enter the donor's name: ")  # Input
     if name == "q":
@@ -32,26 +33,36 @@ def add_amount():  # pragma: no cover
         amount = input("Enter their donation: ")  # Input
         if amount == "q":
             return
-    if name in DONORS_AMT:
-        DONORS_AMT[name] += int(amount)
-        DONORS_CT[name] += 1
+    return name, amount
+
+
+def add_amount(donor, donation):  # pragma: no cover
+    """Add the amount to the donor's total."""
+    if donor in DONORS_AMT:
+        DONORS_AMT[donor] += int(donation)
+        DONORS_CT[donor] += 1
     else:
-        DONORS_AMT[name] = int(amount)
-        DONORS_CT[name] = 1
-    print_letter(name, amount)
+        DONORS_AMT[donor] = int(donation)
+        DONORS_CT[donor] = 1
 
 
-def report():
-    """Print the donor report."""
+def sort_report():
+    """Sorts the donor list."""
     print("\tName\t\tDonation\tTotal Amt\tAverage")
-    x = sorted(DONORS_AMT, key=DONORS_AMT.get)
+    sorted_list = sorted(DONORS_AMT, key=DONORS_AMT.get)
+    return sorted_list
+
+
+def print_report():
+    """Prints the sorted donor list"""
+    x = sort_report()
     for donor in x:
         print("\t{}\t\t{}\t\t${}\t\t${}".format(
             donor,
             DONORS_CT[donor],
             DONORS_AMT[donor],
             DONORS_AMT[donor] / DONORS_CT[donor]))
-
+    
 
 def print_letter(to, contribution):
     """Print the thank you letter to the donor."""
@@ -59,5 +70,5 @@ def print_letter(to, contribution):
     \n\tThank you very much for your generous donation of ${}. It's thanks
      to people like you that we are able to continue our noble cause of
      shaving cats. Without your generous contribution even more cats
-     would be living on the streets with a full coat of hair""".format(
+     would be living on the streets with a full coat of hair\n""".format(
         to, contribution))
