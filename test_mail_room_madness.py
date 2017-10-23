@@ -1,5 +1,6 @@
 import pytest
 
+
 def test_sort_report():
     """Test to make sure the report generates properly."""
     from mail_room_madness import sort_report, DONORS_AMT, DONORS_CT
@@ -20,6 +21,7 @@ def test_add_amount2():
     add_amount('example', 200)
     assert DONORS_AMT['example'] == 300
     assert DONORS_CT['example'] == 2
+
 
 def test_create_letter():
     """Test that the letter prints properly."""

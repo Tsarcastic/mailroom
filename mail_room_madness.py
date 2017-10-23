@@ -24,7 +24,7 @@ def mail_room():  # pragma: no cover
             reply = quit
 
 
-def receive_donation(): # pragma: no cover
+def receive_donation():  # pragma: no cover
     """Receive new donation. Input required."""
     amount = ""
     name = input("Enter the donor's name: ")  # Input
@@ -48,14 +48,14 @@ def add_amount(donor, donation):
 
 
 def sort_report():
-    """Sorts the DONORS_LIST by the DONORS_AMT"""
+    """Sort the DONORS_LIST by the DONORS_AMT."""
     print("\tName\t\tDonation\tTotal Amt\tAverage")
     sorted_list = sorted(DONORS_AMT, key=DONORS_AMT.get)
     return sorted_list
 
 
 def print_report():
-    """Prints the sorted donor list"""
+    """Print the sorted donor list."""
     x = sort_report()
     for donor in x:
         print("\t{}\t\t{}\t\t${}\t\t${}".format(
@@ -63,7 +63,7 @@ def print_report():
             DONORS_CT[donor],
             DONORS_AMT[donor],
             DONORS_AMT[donor] / DONORS_CT[donor]))
-  
+
 
 def write_letter(letter_to, contribution):
     """Print the thank you letter to the donor."""
@@ -72,5 +72,5 @@ def write_letter(letter_to, contribution):
      to people like you that we are able to continue our noble cause of
      shaving the homeless. Without your generous contribution even more cats
      would be living on the streets with a full set of whiskers.\n""".format(
-    letter_to, contribution)
+        letter_to, contribution)
     return letter
