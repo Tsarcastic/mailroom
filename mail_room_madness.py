@@ -1,10 +1,10 @@
-"""Process a donation & issue a thankyou letter or generate a report."""
+"""Process a donation & issue a thank you letter or generate a report."""
 
 DONORS_AMT = {'example': 100, 'other': 20, 'more': 200}
 DONORS_CT = {'example': 1, 'other': 2, 'more': 3}
 
 
-def mail_room():  # pragma: no cover
+def main():  # pragma: no cover
     """Menu Interface. Input required."""
     reply = None
     while reply is not quit:
@@ -13,7 +13,7 @@ def mail_room():  # pragma: no cover
         print("2: Create a Report")
         print("3. Quit this program")
         print("(Enter 'q' at any time to return to this menu.)")
-        reply = int(input("1 or 2?"))  # Input
+        reply = int(input("1, 2, or 3?"))  # Input
         if reply == 1:
             name, amount = receive_donation()
             add_amount(name, amount)
@@ -68,9 +68,13 @@ def print_report():
 def write_letter(letter_to, contribution):
     """Print the thank you letter to the donor."""
     letter = """Dear Mr. or Mrs. {},
-    \n\tThank you very much for your generous donation of ${}. It's thanks
-     to people like you that we are able to continue our noble cause of
-     shaving the homeless. Without your generous contribution even more cats
-     would be living on the streets with a full set of whiskers.\n""".format(
+    \n\tThank you very much for your generous donation of ${}. It's
+        thanks to people like you that we are able to continue our noble
+        cause of shaving the homeless. Without your generous contribution
+        even more homeless people would be living on the streets with a
+        full set of whiskers.\n""".format(
         letter_to, contribution)
     return letter
+
+if __name__ == '__main__':
+    main()
