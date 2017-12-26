@@ -7,7 +7,7 @@ DONORS_CT = {'example': 1, 'other': 2, 'more': 3}
 def main():  # pragma: no cover
     """Menu Interface. Input required."""
     reply = None
-    while reply is not quit:
+    while reply is not 'quit':
         print("Message")
         print("1: Process a Donation & Send a Thank You")
         print("2: Create a Report")
@@ -21,7 +21,7 @@ def main():  # pragma: no cover
         if reply == 2:
             print_report()
         if reply == 3:
-            reply = quit
+            reply = 'quit'
 
 
 def receive_donation():  # pragma: no cover

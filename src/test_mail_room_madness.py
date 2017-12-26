@@ -1,9 +1,10 @@
+"""Test module for mailroom madness."""
 import pytest
 
 
 def test_sort_report():
     """Test to make sure the report generates properly."""
-    from mail_room_madness import sort_report, DONORS_AMT, DONORS_CT
+    from mail_room_madness import sort_report
     assert sort_report() == ['other', 'example', 'more']
 
 
